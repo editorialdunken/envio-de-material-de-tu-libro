@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Envío de Material · Editorial Dunken</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#004aad;--azul-osc:#003c8f;
+    --naranja:#f88f38;--naranja-osc:#d8730f;--naranja-hondo:#b85f0e;
+    --naranja-suave:#fdeddc;--naranja-claro:#fef5ea;
+    --azul-suave:#e9f0fa;--crema:#fbf5ea;--papel:#fffdf8;
+    --tinta:#2a2118;--gris:#6b6256;--linea:#ece4d6;
+    --verde:#1f9d55;--verde-suave:#e4f4e9;
+    --sombra:0 16px 46px -18px rgba(120,70,10,.32);
+    --sombra-sm:0 7px 22px -10px rgba(120,70,10,.26);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Open Sans',sans-serif;color:var(--tinta);background:var(--crema);line-height:1.62;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--naranja);color:#fff;}
+  a{color:var(--azul);}
+
+  /* HERO */
+  .hero{position:relative;background:linear-gradient(160deg,#f88f38 0%,#ef7f22 48%,#d8730f 100%);color:#fff;padding:62px 24px 150px;overflow:hidden;text-align:center;}
+  .blob{position:absolute;border-radius:50%;pointer-events:none;}
+  .blob.b1{width:360px;height:360px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);top:-140px;left:-100px;}
+  .blob.b2{width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);bottom:-120px;right:-80px;}
+  /* sobres / paquetes flotando */
+  .float-el{position:absolute;opacity:.55;animation:bob 6.5s ease-in-out infinite;}
+  .float-el.f1{top:54px;right:9%;animation-delay:0s;}
+  .float-el.f2{bottom:120px;left:10%;animation-delay:2s;}
+  .float-el.f3{top:130px;left:13%;animation-delay:3.8s;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-7deg);}50%{transform:translateY(-13px) rotate(3deg);}}
+  .hero-inner{position:relative;max-width:760px;margin:0 auto;z-index:3;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.5);border-radius:40px;padding:7px 18px 7px 14px;font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;margin-bottom:24px;}
+  .badge svg{width:15px;height:15px;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.3rem,6.3vw,3.9rem);line-height:1.07;margin-bottom:16px;}
+  .hero h1 em{color:#0a3d8f;font-style:italic;text-decoration:underline;text-decoration-color:rgba(10,61,143,.5);text-underline-offset:6px;text-decoration-thickness:3px;}
+  .hero .lead{font-size:clamp(1rem,2.3vw,1.18rem);color:#fff4e8;max-width:560px;margin:0 auto 6px;}
+  .hero-mark{margin-top:30px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  .scroll-cue{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.8);animation:bob2 2s ease-in-out infinite;}
+  @keyframes bob2{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
+
+  /* LAYOUT */
+  .wrap{max-width:900px;margin:-95px auto 0;padding:0 20px 80px;position:relative;z-index:5;}
+  .card{background:var(--papel);border-radius:22px;box-shadow:var(--sombra);padding:44px 42px;margin-bottom:26px;border:1px solid var(--linea);}
+  .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:8px;}
+  .sec-ico{flex-shrink:0;width:54px;height:54px;border-radius:16px;background:var(--naranja-suave);display:flex;align-items:center;justify-content:center;}
+  .sec-ico svg{width:29px;height:29px;}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--naranja-osc);margin-bottom:3px;}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.6vw,2.05rem);color:var(--azul);line-height:1.16;}
+  .sec-sub{color:var(--gris);font-size:1rem;margin:14px 0 4px;}
+  .hl{color:var(--azul);font-weight:600;}
+  .sec-sub.lead-intro{font-size:1.08rem;color:#3a4252;line-height:1.7;}
+  h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--tinta);}
+  p{color:var(--gris);}
+  p strong,li strong,span strong{color:var(--tinta);font-weight:600;}
+
+  /* INTRO destacada */
+  .intro-banner{
+    display:flex;gap:18px;align-items:center;
+    background:linear-gradient(135deg,var(--azul-suave),#fff);
+    border:1px solid var(--linea);border-radius:16px;padding:22px 24px;margin-top:20px;
+  }
+  .intro-banner .ib-ico{
+    flex-shrink:0;width:58px;height:58px;border-radius:50%;
+    background:#fff;border:2px solid var(--azul);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .intro-banner .ib-ico svg{width:30px;height:30px;}
+  .intro-banner p{margin:0;font-size:.97rem;}
+  .intro-banner p b{font-family:'Fraunces',serif;color:var(--azul);}
+
+  /* ÍNDICE */
+  .toc-card{background:linear-gradient(155deg,#004aad,#0a59c4);border-radius:22px;padding:32px 36px;margin-bottom:26px;box-shadow:var(--sombra);color:#fff;}
+  .toc-card h4{font-family:'Fraunces',serif;font-size:1.12rem;margin-bottom:14px;color:#fff;}
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .toc-grid a{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.09);transition:background .16s,transform .16s;font-size:.93rem;font-weight:500;}
+  .toc-grid a:hover{background:rgba(255,255,255,.22);transform:translateX(3px);}
+  .toc-grid a .tn{font-family:'Fraunces',serif;font-weight:700;color:var(--naranja);font-size:.95rem;min-width:20px;}
+
+  /* BLOQUES INTERIOR / TAPA */
+  .part{border-radius:18px;border:1px solid var(--linea);overflow:hidden;margin-top:22px;}
+  .part-head{display:flex;align-items:center;gap:14px;padding:20px 24px;}
+  .part-head .pico{width:48px;height:48px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;}
+  .part-head .pico svg{width:26px;height:26px;}
+  .part-head .ptag{font-size:.71rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .part-head .ptitle{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:var(--tinta);}
+  .part.interior .part-head{background:var(--azul-suave);}
+  .part.interior .ptag{color:var(--azul);}
+  .part.tapa .part-head{background:var(--naranja-suave);}
+  .part.tapa .ptag{color:var(--naranja-osc);}
+  .part-body{padding:22px 24px;background:var(--papel);}
+  .part-body p{font-size:.95rem;}
+  .field{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--linea);}
+  .field:last-child{border-bottom:none;padding-bottom:0;}
+  .field .fico{
+    flex-shrink:0;width:34px;height:34px;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--crema);border:1px solid var(--linea);
+  }
+  .field .fico svg{width:18px;height:18px;}
+  .field .ftxt{font-size:.93rem;}
+  .field .ftxt b{display:block;color:var(--tinta);font-size:.98rem;font-family:'Fraunces',serif;}
+  .opt{font-size:.7rem;font-weight:700;color:var(--gris);background:var(--crema);border:1px solid var(--linea);border-radius:20px;padding:2px 9px;margin-left:4px;letter-spacing:.03em;}
+  .fmt{display:inline-block;font-family:'Open Sans',monospace;font-size:.8rem;font-weight:700;background:var(--tinta);color:#fff;border-radius:5px;padding:1px 8px;letter-spacing:.02em;}
+
+  /* CALLOUT */
+  .callout{display:flex;gap:14px;border-radius:14px;padding:18px 20px;margin:20px 0 0;align-items:flex-start;font-size:.94rem;}
+  .callout svg{width:24px;height:24px;flex-shrink:0;}
+  .callout .cbody b{display:block;margin-bottom:3px;font-size:.97rem;}
+  .callout.warn{background:#fdecec;color:#8a3030;}
+  .callout.warn b{color:#c0392b;}
+  .callout.key{background:var(--naranja-suave);color:#7a4a14;}
+  .callout.key b{color:var(--naranja-osc);}
+  .callout.info{background:var(--azul-suave);color:#27405f;}
+  .callout.info b{color:var(--azul);}
+
+  /* TIPS */
+  .tips{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;}
+  .tip{border:1px solid var(--linea);border-radius:14px;padding:18px;background:var(--papel);transition:transform .18s,box-shadow .18s;}
+  .tip:hover{transform:translateY(-3px);box-shadow:var(--sombra-sm);}
+  .tip .tico{width:40px;height:40px;border-radius:11px;background:var(--naranja-claro);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .tip .tico svg{width:22px;height:22px;}
+  .tip h3{font-size:1.02rem;margin-bottom:4px;}
+  .tip p{font-size:.88rem;margin:0;}
+
+  /* CHECKLIST INTERACTIVA */
+  .checklist{margin-top:22px;}
+  .check-group-title{
+    display:flex;align-items:center;gap:9px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.08rem;color:var(--azul);
+    margin:18px 0 10px;
+  }
+  .check-group-title:first-child{margin-top:0;}
+  .check-group-title svg{width:20px;height:20px;}
+  .check-item{
+    display:flex;gap:13px;align-items:flex-start;
+    background:var(--papel);border:1.5px solid var(--linea);border-radius:12px;
+    padding:14px 16px;margin-bottom:9px;cursor:pointer;
+    transition:border-color .16s,background .16s;
+  }
+  .check-item:hover{border-color:var(--naranja);}
+  .check-item input{display:none;}
+  .check-box{
+    flex-shrink:0;width:24px;height:24px;border-radius:7px;
+    border:2px solid var(--azul);background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .16s,border-color .16s;margin-top:1px;
+  }
+  .check-box svg{width:15px;height:15px;opacity:0;transition:opacity .16s;}
+  .check-item input:checked ~ .check-box{background:var(--verde);border-color:var(--verde);}
+  .check-item input:checked ~ .check-box svg{opacity:1;}
+  .check-item input:checked ~ .check-label{text-decoration:line-through;color:var(--gris);}
+  .check-label{font-size:.94rem;color:var(--tinta);}
+  .check-label b{font-weight:600;}
+  .check-label .mini{display:block;font-size:.82rem;color:var(--gris);font-weight:400;margin-top:1px;}
+  .check-opt{font-size:.68rem;font-weight:700;color:var(--gris);background:var(--crema);border:1px solid var(--linea);border-radius:20px;padding:1px 8px;margin-left:5px;}
+  .progress-wrap{
+    margin-top:18px;background:var(--crema);border:1px solid var(--linea);
+    border-radius:12px;padding:16px 18px;
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
+  .progress-top span{font-size:.88rem;font-weight:600;color:var(--tinta);}
+  .progress-top .pcount{font-family:'Fraunces',serif;color:var(--naranja-osc);font-size:1.05rem;}
+  .progress-bar{height:10px;background:#e8ddc8;border-radius:20px;overflow:hidden;}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--naranja),var(--verde));border-radius:20px;transition:width .3s ease;}
+  .progress-done{margin-top:10px;font-size:.9rem;color:var(--verde);font-weight:600;display:none;align-items:center;gap:7px;}
+  .progress-done svg{width:18px;height:18px;}
+
+  /* PASOS ENVÍO */
+  .send-steps{display:grid;grid-template-columns:1fr;gap:12px;margin-top:22px;}
+  .send-step{display:flex;gap:15px;align-items:flex-start;background:var(--papel);border:1px solid var(--linea);border-radius:14px;padding:18px 20px;}
+  .send-step .sn{
+    flex-shrink:0;width:38px;height:38px;border-radius:11px;
+    background:linear-gradient(145deg,var(--naranja),var(--naranja-osc));color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;
+  }
+  .send-step .sbody h3{font-size:1.05rem;margin-bottom:3px;}
+  .send-step .sbody p{font-size:.92rem;margin:0;}
+  .send-step .sbody .mail{
+    display:inline-flex;align-items:center;gap:6px;margin-top:7px;
+    font-weight:600;color:var(--azul);font-size:.92rem;
+  }
+  .verify{background:#fff3cd;color:#8a6d00;border:1px dashed #d9b94a;border-radius:5px;font-size:.68rem;font-weight:700;padding:1px 6px;letter-spacing:.02em;}
+  .editor-note{margin-top:16px;background:#fffaf0;border:1px dashed #e0c068;border-radius:12px;padding:13px 16px;font-size:.85rem;color:#7a5e10;}
+  .editor-note b{color:#8a6d00;}
+
+  /* DESPUÉS */
+  .after-row{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap;}
+  .after{flex:1;min-width:200px;background:var(--papel);border:1px solid var(--linea);border-radius:14px;padding:18px;}
+  .after .aico{width:42px;height:42px;border-radius:11px;background:var(--azul-suave);display:flex;align-items:center;justify-content:center;margin-bottom:9px;}
+  .after .aico svg{width:23px;height:23px;}
+  .after h3{font-size:1.02rem;margin-bottom:4px;}
+  .after p{font-size:.88rem;margin:0;}
+
+  /* FAQ */
+  details{border:1px solid var(--linea);border-radius:13px;margin-bottom:10px;overflow:hidden;background:var(--papel);transition:border-color .18s;}
+  details[open]{border-color:var(--naranja);box-shadow:var(--sombra-sm);}
+  summary{cursor:pointer;padding:17px 20px;font-weight:600;color:var(--tinta);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:.97rem;}
+  summary::-webkit-details-marker{display:none;}
+  summary:hover{color:var(--naranja-osc);}
+  .qmark{flex-shrink:0;width:26px;height:26px;border-radius:8px;background:var(--naranja-suave);color:var(--naranja-osc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;transition:transform .22s,background .22s;}
+  details[open] .qmark{transform:rotate(45deg);background:var(--naranja);color:#fff;}
+  .answer{padding:0 20px 18px;color:var(--gris);font-size:.92rem;}
+  .answer p{margin-bottom:8px;}
+  .answer p:last-child{margin-bottom:0;}
+
+  /* REDES Y COMUNIDAD */
+  .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;}
+  .social{
+    display:flex;gap:13px;align-items:center;
+    border:1px solid var(--linea);border-radius:14px;padding:16px 18px;
+    background:var(--papel);text-decoration:none;
+    transition:transform .18s,box-shadow .18s,border-color .18s;
+  }
+  .social:hover{transform:translateY(-3px);box-shadow:var(--sombra-sm);border-color:var(--naranja);}
+  .social .sico{
+    width:46px;height:46px;border-radius:13px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .social .sico svg{width:25px;height:25px;}
+  .si-ig{background:linear-gradient(135deg,#f9ce5a,#ee2a7b 55%,#6228d7);}
+  .si-tt{background:#111;}
+  .si-wa{background:#e3f4e8;}
+  .si-fb{background:#e7eef8;}
+  .social .stxt b{display:block;font-family:'Fraunces',serif;font-weight:600;color:var(--tinta);font-size:1rem;}
+  .social .stxt span{font-size:.84rem;color:var(--gris);}
+  .comunidad-banner{
+    margin-top:14px;
+    background:linear-gradient(135deg,var(--naranja-suave),var(--naranja-claro));
+    border:1px solid #f3cda0;border-radius:16px;padding:22px 24px;
+  }
+  .comunidad-banner .cb-head{display:flex;gap:14px;align-items:center;margin-bottom:11px;}
+  .comunidad-banner .cb-ico{
+    width:52px;height:52px;border-radius:14px;flex-shrink:0;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .comunidad-banner .cb-ico svg{width:28px;height:28px;}
+  .comunidad-banner .cb-tag{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--naranja-osc);}
+  .comunidad-banner .cb-title{font-family:'Fraunces',serif;font-weight:600;color:var(--tinta);font-size:1.12rem;}
+  .comunidad-banner p{font-size:.92rem;margin-bottom:14px;}
+  .comunidad-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(145deg,#25d366,#1aa851);color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;padding:13px 22px;border-radius:12px;transition:transform .16s,box-shadow .16s;box-shadow:0 6px 18px -8px rgba(37,211,102,.7);}
+  .comunidad-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px -8px rgba(37,211,102,.8);}
+  .comunidad-btn svg{width:21px;height:21px;color:#fff;}
+
+  /* CIERRE */
+  .closing{background:linear-gradient(155deg,#d8730f,#f88f38);border:none;text-align:center;color:#fff;position:relative;overflow:hidden;}
+  .closing .blob{opacity:.7;}
+  .closing .cl-ico{width:64px;height:64px;border-radius:18px;margin:0 auto 18px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;position:relative;z-index:2;}
+  .closing .cl-ico svg{width:34px;height:34px;}
+  .closing h2{color:#fff;position:relative;z-index:2;}
+  .closing p{color:#fff4e8;position:relative;z-index:2;max-width:540px;margin:14px auto 0;}
+  .closing .sign{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:#fff;margin-top:22px;position:relative;z-index:2;}
+
+  /* FOOTER */
+  footer{text-align:center;padding:30px 20px 44px;color:var(--gris);font-size:.83rem;}
+  footer .logo{font-family:'Fraunces',serif;font-weight:700;color:var(--azul);font-size:1rem;}
+
+  @media(max-width:680px){
+    .card{padding:32px 22px;}
+    .toc-card{padding:26px 22px;}
+    .toc-grid,.tips{grid-template-columns:1fr;}
+    .hero{padding:52px 20px 140px;}
+    .float-el{display:none;}
+    .sec-head{gap:12px;}
+    .sec-ico{width:48px;height:48px;}
+    .intro-banner{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <!-- sobre -->
+  <svg class="float-el f1" width="50" height="50" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.6"/><path d="M3.5 6l8.5 7 8.5-7" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  <!-- paquete -->
+  <svg class="float-el f2" width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  <!-- documento -->
+  <svg class="float-el f3" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M6 3h8l4 4v14H6z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M9 12h6M9 16h6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+
+  <div class="hero-inner">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-3-7-8-4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      Manual del autor · Envío de material
+    </span>
+    <h1>Todo listo para <em>enviar tu libro</em></h1>
+    <p class="lead">Esta es la etapa en la que tu obra arranca a diseñarse. Acá te contamos qué enviar, en qué formato y cómo, para que todo fluya sin demoras.</p>
+    <div class="hero-mark">Editorial Dunken · 30 años junto al autor independiente</div>
+  </div>
+  <div class="scroll-cue">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" stroke="#d8730f" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" stroke="#d8730f" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+      <div><div class="eyebrow">Por qué importa esta etapa</div><h2>El punto de partida del diseño</h2></div>
+    </div>
+    <p class="sec-sub lead-intro">El diseño de tu libro empieza cuando se cumplen dos condiciones: que el <span class="hl">primer pago</span> esté acreditado y que nos llegue <span class="hl">todo tu material, completo y prolijo</span>. Esta guía se ocupa de la segunda. Cuanto más claro y ordenado esté lo que enviás, más rápido y prolijo avanza todo.</p>
+    <div class="intro-banner">
+      <div class="ib-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16.5h.01" stroke="#004aad" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#004aad" stroke-width="1.7"/></svg></div>
+      <p><b>La regla de oro de esta etapa:</b> enviá ahora <strong>todo lo que quieras que aparezca en el libro</strong>. Sumar o quitar contenido más adelante puede cambiar la cantidad de páginas y, con eso, el presupuesto y los tiempos.</p>
+    </div>
+  </section>
+
+  <!-- ÍNDICE -->
+  <nav class="toc-card">
+    <h4>📦 Qué vas a encontrar acá</h4>
+    <div class="toc-grid">
+      <a href="#interior"><span class="tn">1</span> El interior de tu libro</a>
+      <a href="#tapa"><span class="tn">2</span> El material de la tapa</a>
+      <a href="#tips"><span class="tn">3</span> Recomendaciones clave</a>
+      <a href="#checklist"><span class="tn">4</span> Checklist antes de enviar</a>
+      <a href="#enviar"><span class="tn">5</span> Cómo y dónde enviarlo</a>
+      <a href="#despues"><span class="tn">6</span> Qué pasa después</a>
+      <a href="#comunidad"><span class="tn">7</span> Sumate a la comunidad</a>
+    </div>
+  </nav>
+
+  <!-- 1. INTERIOR + 2. TAPA -->
+  <section class="card" id="interior">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v18H6.5A2.5 2.5 0 004 22.5z" stroke="#d8730f" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#d8730f" stroke-width="1.7"/></svg></div>
+      <div><div class="eyebrow">Qué enviar</div><h2>Las dos partes de tu libro</h2></div>
+    </div>
+    <p class="sec-sub">Tu envío tiene dos grandes bloques: el <strong>interior</strong> (todo el contenido del libro) y la <strong>tapa</strong> (lo que va por fuera). Repasemos qué incluye cada uno.</p>
+
+    <!-- INTERIOR -->
+    <div class="part interior">
+      <div class="part-head">
+        <div class="pico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h8l4 4v14H6z" stroke="#004aad" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v4h4M9 12h6M9 16h6" stroke="#004aad" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div><div class="ptag">Parte 1</div><div class="ptitle">El interior</div></div>
+      </div>
+      <div class="part-body">
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18H6z" stroke="#004aad" stroke-width="1.7"/><path d="M9 8h6M9 12h6M9 16h3" stroke="#f88f38" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+          <div class="ftxt"><b>El texto final y corregido</b>El contenido completo del libro, en su versión definitiva, en un solo archivo ordenado. Formato <span class="fmt">.DOC</span> <span class="fmt">.DOCX</span> o <span class="fmt">.PDF</span>.</div>
+        </div>
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="#004aad" stroke-width="1.7"/><path d="M4 9l8 5 8-5" stroke="#f88f38" stroke-width="1.9" stroke-linejoin="round"/></svg></div>
+          <div class="ftxt"><b>Páginas preliminares y de cierre</b>Dedicatoria, prólogo, agradecimientos, epílogo, índice. Todo lo que quieras que forme parte del libro, en el orden en que debe aparecer.</div>
+        </div>
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#004aad" stroke-width="1.7"/><circle cx="9" cy="10" r="2" stroke="#f88f38" stroke-width="1.7"/><path d="M5 17l4-4 3 3 4-4 3 3" stroke="#f88f38" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <div class="ftxt"><b>Imágenes o ilustraciones del interior <span class="opt">si lleva</span></b>En alta resolución, para que se vean bien impresas. Cuanto mejor el original, mejor el resultado.</div>
+        </div>
+        <div class="callout info" style="margin-top:18px;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.5L18 9l-3.5 3 1 5-3.5-2.3L8.5 20l1-5L6 12l4.2-1.5z" stroke="#004aad" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <div class="cbody"><b>Cómo trabajamos tu texto</b>Sobre el archivo que enviás hacemos una <strong>limpieza técnica</strong> (normalización de estilos, espacios, formato) para prepararlo para la diagramación — pero <strong>no cambiamos el contenido</strong> de tu obra. Si querés una corrección más minuciosa de tu texto, consultá con tu diseñador/a las distintas opciones disponibles, como el trabajo con correctores profesionales o el nuevo informe de corrección y sugerencias de nuestra IA editorial especializada. Si las propuestas te parecen bien, se pueden aplicar.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAPA -->
+    <div class="part tapa" id="tapa">
+      <div class="part-head">
+        <div class="pico"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1.5" stroke="#d8730f" stroke-width="1.7"/><path d="M9 3v18" stroke="#d8730f" stroke-width="1.7"/><circle cx="14" cy="9" r="2" stroke="#d8730f" stroke-width="1.6"/></svg></div>
+        <div><div class="ptag">Parte 2</div><div class="ptitle">La tapa</div></div>
+      </div>
+      <div class="part-body">
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#d8730f" stroke-width="1.7"/><circle cx="8.5" cy="10" r="1.8" stroke="#f88f38" stroke-width="1.7"/><path d="M4 17l5-5 3 3 4-4 4 4" stroke="#f88f38" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <div class="ftxt"><b>Imagen o idea de diseño</b>Si tenés una imagen para la tapa, enviala en formato <span class="fmt">JPG · 300 DPI</span> a tamaño real. Si no tenés imagen, podés mandarnos un Word describiendo lo más detallado posible cómo te imaginás la tapa.</div>
+        </div>
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v16H5z" stroke="#d8730f" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="#f88f38" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="ftxt"><b>Sinopsis</b>Un resumen breve del contenido o el espíritu de la obra. Va en la contratapa.</div>
+        </div>
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="3.5" stroke="#d8730f" stroke-width="1.7"/><path d="M5 20a7 7 0 0114 0" stroke="#d8730f" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ftxt"><b>Foto del autor/a <span class="opt">opcional</span></b>Si querés que aparezca tu foto en el diseño, enviala en buena calidad.</div>
+        </div>
+        <div class="field">
+          <div class="fico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-6-3-6 3z" stroke="#d8730f" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8h6M9 11h4" stroke="#f88f38" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="ftxt"><b>Datos biográficos y redes <span class="opt">opcional</span></b>Una breve reseña tuya o presentación personal, más redes sociales o datos de contacto que quieras que figuren en el texto de contratapa o solapa.</div>
+        </div>
+        <div class="callout info" style="margin-top:18px;">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#004aad" stroke-width="1.7"/><path d="M12 11v5" stroke="#004aad" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="1.2" fill="#004aad"/></svg>
+          <div class="cbody"><b>La tapa puede ir en paralelo</b>Es lo primero que se manda a imprenta, así que cuanto antes esté lista, mejor. Si ya tenés la idea o el material, podés ir trabajándola mientras avanza el interior.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. TIPS -->
+  <section class="card" id="tips">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0012 3z" stroke="#d8730f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><div class="eyebrow">Para que salga perfecto</div><h2>Recomendaciones clave</h2></div>
+    </div>
+    <p class="sec-sub">Cuatro consejos que marcan la diferencia entre un envío que fluye y uno que se traba.</p>
+    <div class="tips">
+      <div class="tip">
+        <div class="tico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#d8730f" stroke-width="1.7"/><path d="M3 17l5-5 3 3 4-4 6 6" stroke="#d8730f" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8" cy="9.5" r="1.6" fill="#f88f38"/></svg></div>
+        <h3>Imágenes en alta resolución</h3>
+        <p>Las imágenes de baja calidad se ven mal impresas. Enviá siempre el mejor original que tengas, a tamaño real.</p>
+      </div>
+      <div class="tip">
+        <div class="tico"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#d8730f" stroke-width="1.7"/><path d="M16 16l5 5" stroke="#d8730f" stroke-width="1.9" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" transform="rotate(45 11 11)"/></svg></div>
+        <h3>Evitá imágenes de internet</h3>
+        <p>Suelen tener baja resolución y pueden estar protegidas por derechos de autor. Usá material propio o con permiso.</p>
+      </div>
+      <div class="tip">
+        <div class="tico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#d8730f" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+        <h3>Un solo archivo, bien ordenado</h3>
+        <p>El interior debe ir en un único documento, con todo el contenido en el orden correcto. Nada de capítulos sueltos.</p>
+      </div>
+      <div class="tip">
+        <div class="tico"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#d8730f" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#f88f38" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Material claro y completo</h3>
+        <p>Si algo se entiende a medias, genera idas y vueltas. Cuanto más detallado y definitivo, más ágil el proceso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CHECKLIST INTERACTIVA -->
+  <section class="card" id="checklist">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11l2 2 4-4" stroke="#d8730f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="4" width="16" height="16" rx="3" stroke="#d8730f" stroke-width="1.7"/></svg></div>
+      <div><div class="eyebrow">Antes de mandar</div><h2>Tu checklist de envío</h2></div>
+    </div>
+    <p class="sec-sub">Marcá cada ítem a medida que lo vas teniendo listo. Los opcionales solo si aplican a tu libro. Cuando todo esté tildado, ¡estás en condiciones de enviar!</p>
+
+    <div class="checklist">
+      <div class="check-group-title">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h8l4 4v14H6z" stroke="#004aad" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v4h4" stroke="#004aad" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        El interior
+      </div>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Texto final en un solo archivo Word o PDF</b><span class="mini">En su versión definitiva — sobre el archivo hacemos limpieza técnica, no cambios de contenido</span></span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Páginas preliminares y de cierre</b><span class="mini">Dedicatoria, prólogo, agradecimientos, epílogo, índice — lo que corresponda</span></span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Imágenes del interior en alta resolución</b><span class="check-opt">solo si lleva</span></span>
+      </label>
+
+      <div class="check-group-title">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1.5" stroke="#d8730f" stroke-width="1.7"/><path d="M9 3v18" stroke="#d8730f" stroke-width="1.7"/></svg>
+        La tapa
+      </div>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Imagen de tapa</b> (JPG 300 DPI) <b>o</b> Word con la idea descrita</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Sinopsis</b> para la contratapa</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Foto del autor/a</b><span class="check-opt">opcional</span></span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Datos biográficos y redes sociales</b><span class="check-opt">opcional</span></span>
+      </label>
+
+      <div class="check-group-title">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-3-7-8-4z" stroke="#004aad" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        Antes de tocar "enviar"
+      </div>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>Revisé que esté TODO</b> lo que quiero en el libro<span class="mini">Sumar contenido después puede cambiar páginas, costo y plazos</span></span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="ck">
+        <span class="check-box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="check-label"><b>El primer pago está realizado</b> (o lo voy a hacer junto con el envío)</span>
+      </label>
+
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span>Tu progreso</span>
+          <span class="pcount"><span id="done">0</span> / <span id="total">9</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+        <div class="progress-done" id="doneMsg">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f9d55"/><path d="M7 12l3.5 3.5L17 8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          ¡Todo listo! Ya podés enviar tu material.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ENVIAR -->
+  <section class="card" id="enviar">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-3-7-8-4z" stroke="#d8730f" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+      <div><div class="eyebrow">El envío</div><h2>Cómo y dónde enviarlo</h2></div>
+    </div>
+    <p class="sec-sub">Una vez que tu checklist está completa, enviar es muy simple.</p>
+
+    <div class="send-steps">
+      <div class="send-step">
+        <div class="sn">1</div>
+        <div class="sbody">
+          <h3>Reuní todo en un mismo envío</h3>
+          <p>Adjuntá el interior y todo el material de tapa juntos. Si los archivos pesan mucho, podés usar un enlace de descarga (Drive, WeTransfer) y pegarlo en el cuerpo del mail.</p>
+        </div>
+      </div>
+      <div class="send-step">
+        <div class="sn">2</div>
+        <div class="sbody">
+          <h3>Enviáselo a tu diseñador/a y a tu editor</h3>
+          <p>El material se envía a tu diseñador/a asignado/a y, en todo caso, también a tu editor. Lo más práctico es responder al correo donde recibiste tu Orden de Trabajo, así todo queda ordenado en la misma conversación. Como referencia, podés escribir a:</p>
+          <span class="mail">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#004aad" stroke-width="2"/><path d="M3.5 6l8.5 7 8.5-7" stroke="#004aad" stroke-width="2" stroke-linejoin="round"/></svg>
+            <a href="mailto:dunkendiego@gmail.com">dunkendiego@gmail.com</a>
+          </span>
+          <p style="margin-top:8px;font-size:.88rem;">De todas formas, no te preocupes si todavía no sabés a quién mandarlo: tu diseñador/a se va a contactar con vos para pedirte el material y coordinar los detalles.</p>
+        </div>
+      </div>
+      <div class="send-step">
+        <div class="sn">3</div>
+        <div class="sbody">
+          <h3>Aclará en el cuerpo del mail</h3>
+          <p>Indicá el título de tu libro y tu número de orden, y cualquier detalle especial que quieras avisar al equipo de diseño. Cuanto más claro, mejor.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout key">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#d8730f" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="cbody"><b>Centralizá la comunicación</b>Evitá enviar el material con copia a varias personas de la editorial: eso genera confusiones y demoras. Un solo envío, a un solo destinatario.</div>
+    </div>
+  </section>
+
+  <!-- 6. DESPUÉS -->
+  <section class="card" id="despues">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18L9 6l5 8 3-4 3 8" stroke="#d8730f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="6" r="1.6" fill="#f88f38"/></svg></div>
+      <div><div class="eyebrow">El paso siguiente</div><h2>Qué pasa después de enviar</h2></div>
+    </div>
+    <p class="sec-sub">Cuando ya tenemos tu material, tu libro entra en diagramación. Esto es lo que viene:</p>
+
+    <div class="after-row">
+      <div class="after">
+        <div class="aico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="#004aad" stroke-width="1.8"/><path d="M5 20a7 7 0 0114 0" stroke="#004aad" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Se asigna tu diseñador/a</h3>
+        <p>El equipo asigna a la persona que va a diagramar tu libro y armar la tapa.</p>
+      </div>
+      <div class="after">
+        <div class="aico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 19l7-7-4-4-7 7v4h4z" stroke="#004aad" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Comienza la diagramación</h3>
+        <p>Tu obra empieza a tomar forma. El diseñador/a prepara la primera prueba de tu libro.</p>
+      </div>
+      <div class="after">
+        <div class="aico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v12H7l-3 3z" stroke="#004aad" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9h8M8 13h5" stroke="#f88f38" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>El diseñador/a te contacta</h3>
+        <p>Se comunica con vos para organizar los detalles y, cuando esté lista, acercarte la primera prueba de galera.</p>
+      </div>
+    </div>
+
+    <div class="callout key">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="#d8730f" stroke-width="1.7"/><path d="M12 9v4l3 2" stroke="#d8730f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 2h6" stroke="#d8730f" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="cbody"><b>Un poco de paciencia con la primera prueba</b>La primera prueba de galera es la que más tiempo lleva en prepararse, y probablemente sea la que más correcciones tengas para marcar — es completamente normal y esperable. Justamente para eso existe: es el momento de señalarle al diseñador/a todo lo que quieras ajustar. Puede que esa primera versión venga más estándar o que algunos detalles aparezcan "aplanados"; no te preocupes, ahí es donde empieza el trabajo fino entre vos y tu diseñador/a hasta llegar a la versión que querés.</div>
+    </div>
+
+    <div class="callout info">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#004aad" stroke-width="1.7"/><path d="M12 11v5" stroke="#004aad" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="1.2" fill="#004aad"/></svg>
+      <div class="cbody"><b>Cuanto más claro envíes, mejor arranca todo</b>Mientras más claro y detallado sea tu material —qué querés y cómo lo imaginás— más cerca va a estar la primera prueba de lo que tenés en mente. Aun así, recordá que esa primera versión es un punto de partida para trabajar juntos, no el resultado final.</div>
+    </div>
+
+    <div class="callout info">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="16" height="11" rx="2" stroke="#004aad" stroke-width="1.7"/><path d="M8 9V6a4 4 0 018 0v3" stroke="#004aad" stroke-width="1.7"/><circle cx="12" cy="14.5" r="1.6" fill="#f88f38"/></svg>
+      <div class="cbody"><b>Un dato sobre la carga de archivos</b>Cuando tu orden pasa a tener un diseñador asignado, el sistema bloquea la carga automática de nuevos archivos, para evitar versiones duplicadas y desorden. Por eso es tan importante enviar todo completo desde el principio: cualquier agregado posterior se coordina directamente con tu diseñador/a.</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#d8730f" stroke-width="1.8"/><path d="M9.5 9.5a2.5 2.5 0 014.5 1.5c0 1.7-2.5 2-2.5 3.5" stroke="#d8730f" stroke-width="1.8" stroke-linecap="round"/><circle cx="11.9" cy="17" r="1.1" fill="#f88f38"/></svg></div>
+      <div><div class="eyebrow">Dudas habituales</div><h2>Preguntas frecuentes</h2></div>
+    </div>
+    <p class="sec-sub">Las consultas que más aparecen en esta etapa.</p>
+    <div style="margin-top:20px;">
+      <details>
+        <summary>¿En qué formato envío el texto del interior?<span class="qmark">+</span></summary>
+        <div class="answer"><p>En Word (.doc / .docx) o PDF, en un único archivo con todo el contenido en orden. Si tu libro lleva imágenes, mandalas también en alta resolución.</p></div>
+      </details>
+      <details>
+        <summary>No tengo una imagen para la tapa, ¿qué hago?<span class="qmark">+</span></summary>
+        <div class="answer"><p>No hay problema. Podés enviarnos un Word describiendo lo más detallado posible cómo te imaginás la tapa: estilo, colores, sensación, referencias de otros libros que te gusten. El equipo de diseño puede trabajar a partir de eso. También se puede hacer un diseño tipográfico, sin imágenes.</p></div>
+      </details>
+      <details>
+        <summary>¿Por qué la imagen tiene que ser en 300 DPI?<span class="qmark">+</span></summary>
+        <div class="answer"><p>Los DPI son la resolución de la imagen. Para que se vea nítida impresa, necesita 300 DPI a tamaño real. Las imágenes de internet o de baja resolución se ven borrosas o pixeladas en el libro físico.</p></div>
+      </details>
+      <details>
+        <summary>¿La editorial revisa la ortografía de mi libro?<span class="qmark">+</span></summary>
+        <div class="answer"><p>Sobre el archivo que enviás hacemos una limpieza técnica para prepararlo para la diagramación, pero no modificamos el contenido de tu obra. El texto se diagrama tal como lo entregás.</p><p>Si querés una corrección más minuciosa, consultá con tu diseñador/a las opciones disponibles: el trabajo con correctores profesionales o el nuevo informe de corrección y sugerencias de nuestra IA editorial especializada. Si las propuestas te parecen bien, se pueden aplicar.</p></div>
+      </details>
+      <details>
+        <summary>¿Puedo mandar el material en partes o a medida que lo termino?<span class="qmark">+</span></summary>
+        <div class="answer"><p>Lo ideal es enviar todo junto y completo en un solo envío. Mandar material en cuotas genera versiones desordenadas y demoras. Si te falta algo puntual de la tapa, podés avisarlo, pero el interior debe ir completo y final.</p></div>
+      </details>
+      <details>
+        <summary>Ya envié el material, ¿me olvidé de algo importante?<span class="qmark">+</span></summary>
+        <div class="answer"><p>Si te diste cuenta de que falta algo, escribí cuanto antes a tu contacto de la editorial. Si todavía no se asignó un diseñador, se puede sumar sin problema. Una vez asignado, el sistema bloquea las cargas automáticas y cualquier agregado se coordina directamente con tu diseñador/a.</p></div>
+      </details>
+      <details>
+        <summary>¿Qué pasa si después quiero agregar o sacar contenido?<span class="qmark">+</span></summary>
+        <div class="answer"><p>Se puede, pero tené en cuenta que sumar o quitar texto o imágenes puede modificar la cantidad de páginas del libro. Eso puede generar un ajuste en el presupuesto (a favor o en contra) y en los plazos. Por eso recomendamos enviar todo definitivo desde el inicio.</p></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- REDES Y COMUNIDAD -->
+  <section class="card" id="comunidad">
+    <div class="sec-head">
+      <div class="sec-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11a8 8 0 018-8M4 11a8 8 0 008 8M12 3a8 8 0 018 8M20 11a8 8 0 01-8 8" stroke="#d8730f" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="11" r="2.2" fill="#f88f38"/></svg></div>
+      <div><div class="eyebrow">Mientras tu libro avanza</div><h2>Sumate a la comunidad Dunken</h2></div>
+    </div>
+    <p class="sec-sub">Publicar es también formar parte de algo más grande. Seguinos en redes para estar al tanto de novedades, ferias y autores, y sumate a nuestra comunidad para conectar con otros escritores.</p>
+
+    <div class="social-grid">
+      <a class="social" href="https://www.instagram.com/editorial.dunken" target="_blank" rel="noopener">
+        <div class="sico si-ig"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5.5" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.9"/><circle cx="17" cy="7" r="1.3" fill="#fff"/></svg></div>
+        <div class="stxt"><b>Instagram</b><span>@editorial.dunken</span></div>
+      </a>
+      <a class="social" href="https://www.tiktok.com/@editorialdunken" target="_blank" rel="noopener">
+        <div class="sico si-tt"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.5a3.5 3.5 0 11-3.5-3.5M14 7.5A5 5 0 0019 11" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="stxt"><b>TikTok</b><span>@editorialdunken</span></div>
+      </a>
+    </div>
+
+    <div class="comunidad-banner">
+      <div class="cb-head">
+        <div class="cb-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="#d8730f" stroke-width="1.8"/><path d="M3.5 19a5.5 5.5 0 0111 0" stroke="#d8730f" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="8" r="2.4" stroke="#d8730f" stroke-width="1.8"/><path d="M14.5 18a4.5 4.5 0 016.5-4" stroke="#d8730f" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div>
+          <div class="cb-tag">Grupo de WhatsApp</div>
+          <div class="cb-title">Comunidad de autores Dunken</div>
+        </div>
+      </div>
+      <p>Un espacio para conectar con otros escritores, apoyarse mutuamente, intercambiar estrategias y crecer juntos dentro de la comunidad literaria. Mientras tu libro avanza, es un buen lugar para no transitar el camino en soledad.</p>
+      <a class="comunidad-btn" href="https://chat.whatsapp.com/FGhJ7NayHx41s3BGePuryz" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.5 8.6 3.5 15.5c0 2.4.7 4.7 1.9 6.7L3.3 29l7-1.8c1.9 1 4 1.6 6.2 1.6h.1c6.9 0 12.5-5.6 12.5-12.5C29 8.6 23.4 3 16 3zm0 22.8c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.3 10.3 0 01-1.6-5.6c0-5.7 4.7-10.4 10.4-10.4 2.8 0 5.4 1.1 7.3 3a10.3 10.3 0 013 7.4c0 5.7-4.7 10.4-10.4 10.4zm5.7-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.4 1.4 3.6.2.2 2.5 3.8 6 5.3 2.2 1 3.1 1 4.2.9.7-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+        Unirme a la comunidad de autores
+      </a>
+    </div>
+
+    <div class="editor-note">
+      <b>Nota para la editorial — verificar antes de publicar:</b> los datos de redes y el grupo de comunidad de autores están cargados. Solo resta revisar que todo siga vigente al momento de publicar el manual.
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="card closing">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <div class="cl-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-3-7-8-4z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/></svg></div>
+    <h2 style="font-size:clamp(1.5rem,3.6vw,2rem);">Cuando envíes, tu libro arranca</h2>
+    <p>Este es el momento en que tu obra deja de ser un archivo y empieza a convertirse en un libro. Tomate el tiempo de revisar que esté todo, enviá con tranquilidad, y dejá que el equipo de diseño haga su parte.</p>
+    <p class="sign">Tu material en orden es la mejor forma de empezar.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p class="logo">Editorial Dunken</p>
+  <p>30 años al servicio del autor independiente · Manual de Envío de Material</p>
+</footer>
+
+<script>
+  (function(){
+    var boxes = document.querySelectorAll('.ck');
+    var done = document.getElementById('done');
+    var total = document.getElementById('total');
+    var fill = document.getElementById('fill');
+    var doneMsg = document.getElementById('doneMsg');
+    total.textContent = boxes.length;
+    function update(){
+      var c = 0;
+      boxes.forEach(function(b){ if(b.checked) c++; });
+      done.textContent = c;
+      fill.style.width = (c / boxes.length * 100) + '%';
+      doneMsg.style.display = (c === boxes.length) ? 'flex' : 'none';
+    }
+    boxes.forEach(function(b){ b.addEventListener('change', update); });
+    update();
+  })();
+</script>
+
+</body>
+</html>
